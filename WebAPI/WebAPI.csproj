@@ -10,11 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <ProjectReference Include="..\Business\Business.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj" />
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,9 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
         public static string AuthorizationDenied = "Yetkiniz yeterli değil";
 
-        public static string CarImageDeleted { get; internal set; }
-        public static string CarImageUpdated { get; internal set; }
+        public static string BookImageDeleted = "Kitap resmi silindi";
+        public static string BookImageUpdated = "Kitap resmi güncellendi";
+
+        public static string ParametersNotFound = "Seçimlerinizle alakalı kitap yok";
     }
 }

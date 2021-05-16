@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Entities.DTOs;
+using DataAccess.Concrete.Contexts;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -34,6 +36,32 @@ namespace DataAccess.Concrete.EntityFramework
                                  BookName = b.BookName
                              };
                 return result.ToList();
+            }
+        }
+
+        public List<BookDetailDto> GetBooksByFilter(Expression<Func<BookDetailDto, bool>> filter = null)
+        {
+            using (BooksContext context = new BooksContext())
+            {
+                var result = from b in context.Books
+                             join p in context.Publishers
+                             on b.PublisherId equals p.Id
+                             join w in context.Writers
+                             on b.WriterId equals w.Id
+                             join c in context.Categories
+                             on b.CategoryId equals c.Id
+                             select new BookDetailDto
+                             {
+                                 BookId = b.Id,
+                                 PublisherId = p.Id,
+                                 WriterId = w.Id,
+                                 CategoryId = c.Id,
+                                 PublisherName = p.PublisherName,
+                                 BookName = b.BookName,
+                                 WriterName = w.WriterName,
+                                 CategoryName = c.CategoryName
+                             };
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
             }
         }
     }

@@ -32,7 +32,7 @@ namespace Business.Concrete
         public IResult Delete(BookImage bookImage)
         {
             _bookImageDal.Delete(bookImage);
-            return new SuccessResult(Messages.CarImageDeleted);
+            return new SuccessResult(Messages.BookImageDeleted);
         }
 
         public IDataResult<List<BookImage>> GetAll()
@@ -45,10 +45,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<BookImageDetailDto>>(_bookImageDal.GetBookImageDetails());
         }
 
-        public IDataResult<List<BookImageDetailDto>> GetByBookId(int id)
+        public IDataResult<BookImage> GetByBookId(int id)
         {
-            var data = _bookImageDal.GetBookImageDetails();
-            return new SuccessDataResult<List<BookImageDetailDto>>(data.FindAll(i => i.BookId == id));
+            return new SuccessDataResult<BookImage>(_bookImageDal.Get(b => b.BookId == id));
         }
 
         public IDataResult<BookImage> GetById(int id)
@@ -59,7 +58,7 @@ namespace Business.Concrete
         public IResult Update(BookImage bookImage)
         {
             _bookImageDal.Update(bookImage);
-            return new SuccessResult(Messages.CarImageUpdated);
+            return new SuccessResult(Messages.BookImageUpdated);
         }
     }
 }

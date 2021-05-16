@@ -15,7 +15,7 @@ namespace Business.Abstract
         IResult Delete(BookImage bookImage);
         IDataResult<List<BookImage>> GetAll();
         IDataResult<BookImage> GetById(int id);
-        IDataResult<List<BookImageDetailDto>> GetByBookId(int id);
+        IDataResult<BookImage> GetByBookId(int id);
         IDataResult<List<BookImageDetailDto>> GetBookImageDetails();
     }
 }

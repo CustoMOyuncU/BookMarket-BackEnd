@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace DataAccess.Concrete.Contexts
 {
-    public class BooksContext:DbContext
+    public class BooksContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

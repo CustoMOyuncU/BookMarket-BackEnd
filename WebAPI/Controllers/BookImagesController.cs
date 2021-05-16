@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +14,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarImagesController : ControllerBase
+    public class BookImagesController : ControllerBase
     {
         public static IWebHostEnvironment _webHostEnvironment;
         IBookImageService _bookImageService;
-        public CarImagesController(IWebHostEnvironment webHostEnvironment, IBookImageService bookImageService)
+        public BookImagesController(IWebHostEnvironment webHostEnvironment, IBookImageService bookImageService)
         {
             _webHostEnvironment = webHostEnvironment;
             _bookImageService = bookImageService;
@@ -55,8 +57,8 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcarimagebybookid")]
-        public IActionResult GetCarImageByBookId(int id)
+        [HttpGet("getbookimagebybookid")]
+        public IActionResult GetBookImageByBookId(int id)
         {
             var result = _bookImageService.GetByBookId(id);
             if (result.Success)
@@ -79,10 +81,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getfilebyid")]
-        public IActionResult GetFileById(int id)
+        [HttpGet("getfilebybookid")]
+        public IActionResult GetFileByBookId(int id)
         {
-            var result = _bookImageService.GetById(id);
+            var result = _bookImageService.GetByBookId(id);
 
             if (result.Success)
             {
@@ -92,6 +94,5 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
     }
 }

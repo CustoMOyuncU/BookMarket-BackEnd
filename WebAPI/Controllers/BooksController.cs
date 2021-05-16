@@ -42,6 +42,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbooksbyfilter")]
+        public IActionResult GetBookDetails(int publisherId, int categoryId, int writerId)
+        {
+            var result = _bookService.GetBooksDetailsByFilter(writerId,publisherId,categoryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("add")]
         public IActionResult Add(Book book)
         {
