@@ -33,7 +33,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  WriterName = w.WriterName,
                                  PublisherName = p.PublisherName,
                                  CategoryName = c.CategoryName,
-                                 BookName = b.BookName
+                                 BookName = b.BookName,
+                                 UnitPrice = b.UnitPrice
                              };
                 return result.ToList();
             }
@@ -59,7 +60,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  PublisherName = p.PublisherName,
                                  BookName = b.BookName,
                                  WriterName = w.WriterName,
-                                 CategoryName = c.CategoryName
+                                 CategoryName = c.CategoryName,
+                                 UnitPrice = b.UnitPrice
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
             }

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinsessAspects.Autofac;
 using Business.Constants;
 using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Business;
@@ -21,6 +22,7 @@ namespace Business.Concrete
             _bookDal = bookDal;
         }
 
+        [SecuredOperation("book.add")]
         public IResult Add(Book book)
         {
             _bookDal.Add(book);
