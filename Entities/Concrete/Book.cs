@@ -11,6 +11,7 @@ namespace Entities.Concrete
         public int WriterId { get; set; }
         public int CategoryId { get; set; }
         public int PublisherId { get; set; }
+        public int UnitPrice { get; set; }
         public string BookName { get; set; }
         public DateTime WritedDate { get; set; }
     }
