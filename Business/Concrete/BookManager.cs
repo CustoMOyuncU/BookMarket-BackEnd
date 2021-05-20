@@ -92,6 +92,10 @@ namespace Business.Concrete
             {
                 return new SuccessDataResult<List<BookDetailDto>>(_bookDal.GetBooksByFilter(b => b.WriterId == writerId));          
             }
+            else if(writerId == 0 && categoryId == 0 && publisherId == 0)
+            {
+                return new SuccessDataResult<List<BookDetailDto>>(_bookDal.GetBookDetailsDto());
+            }
             return new ErrorDataResult<List<BookDetailDto>>(Messages.ParametersNotFound);
         }
     }
